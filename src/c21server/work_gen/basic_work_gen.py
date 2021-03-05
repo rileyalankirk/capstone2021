@@ -1,21 +1,21 @@
-import redis
 import random
 import time
-
-r = redis.Redis()
+from redis import Redis
 
 
 def generateJobs(r):
-    for i in range(10):
-        id = random.randint(0, 10000)
+    for _ in range(10):
+        key = random.randint(0, 10000)
         value = random.randint(0, 10)
-        r.hset("jobs_waiting", id, value)
+        r.hset("jobs_waiting", key, value)
 
 
-def emulateJobCreation(r):
-    for i in range(5):
+def emulateJobCreation():
+    r = Redis(host='20.0.0.20', port='6379')
+    for _ in range(5):
         generateJobs(r)
         time.sleep(30)
 
 
-emulateJobCreation(r)
+if __name__ == '__main__':
+    emulateJobCreation()

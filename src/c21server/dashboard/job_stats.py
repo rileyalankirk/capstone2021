@@ -1,7 +1,7 @@
 from redis import Redis
 
 
-r = Redis(host='database')
+r = Redis(host='20.0.0.20', port='6379')
 
 def get_jobs_stats():
     jobs_waiting = int(r.hlen('jobs_waiting'))

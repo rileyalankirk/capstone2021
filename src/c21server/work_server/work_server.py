@@ -5,10 +5,10 @@ from redis import Redis
 class WorkServer:
     def __init__(self):
         self.app = Flask(__name__)
-        self.redis = Redis()
+        self.redis = Redis(host='20.0.0.20', port='6379')
 
 
-def create_server(server=WorkServer()):
+def create_server(workserver=WorkServer()):
     '''Create server, add endpoints, and return the server'''
 
     def get_first_key(data):
@@ -20,21 +20,21 @@ def create_server(server=WorkServer()):
             return keys[0]
         return -1
 
-    @server.app.route('/get_job', methods=['GET'])
+    @workserver.app.route('/get_job', methods=['GET'])
     def get_job():
-        keys = server.redis.hkeys("jobs_waiting")
+        keys = workserver.redis.hkeys("jobs_waiting")
         if len(keys) == 0:
             return jsonify({"error": "There are no jobs available"}), 400 
-        value = server.redis.hget("jobs_waiting", keys[0])
-        server.redis.hdel("jobs_waiting", keys[0])
+        value = workserver.redis.hget("jobs_waiting", keys[0])
+        workserver.redis.hdel("jobs_waiting", keys[0])
         return jsonify({keys[0].decode(): value.decode()}), 200
 
-    @server.app.route('/put_results', methods=['PUT'])
+    @workserver.app.route('/put_results', methods=['PUT'])
     def put_results():
         data = json.loads(request.data)
         key = get_first_key(data)
         if (key == -1):
-            return '', 400            
+            return '', 400
         print("job_id: %s, value: %s" % (key, data[key]))
         return '', 200
 
