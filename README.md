@@ -20,6 +20,13 @@ Additionally, we make use of make in order to run tests.
   pip install -e .
   ```
 
+## Vagrant Setup
+
+* Install vagrant
+
+* Install virtualbox
+
+* See `vagrant.md` docs for more information on use
 
 ## Run Static Analysis and Tests
 
