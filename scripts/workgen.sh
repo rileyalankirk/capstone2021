@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/capstone2021
+cd /home/vagrant/capstone2021
 source .venv/bin/activate
-git checkout remotes/origin/automate
-python3 src/c21server/work_gen/work_gen.py
+sudo git checkout remotes/origin/automate
+sudo python3 src/c21server/work_gen/work_gen.py
