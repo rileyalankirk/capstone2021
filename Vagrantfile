@@ -10,7 +10,6 @@ Vagrant.configure("2") do |config|
             sudo apt-get install -y redis-server python3-pip python3-venv git
             git clone https://github.com/cs334s21/capstone2021
             cd capstone2021
-            sudo git checkout remotes/origin/automate
             sudo python3 -m venv .venv
             source .venv/bin/activate
             sudo pip3 install -e .
