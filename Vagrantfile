@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
         demo.vm.provision "shell", inline:<<-SCRIPT
             sudo apt-get update
             sudo apt-get install -y redis-server python3-pip python3-venv git
-            git clone https://github.com/rileyalankirk/capstone2021
+            git clone https://github.com/cs334s21/capstone2021
             cd capstone2021
             sudo git checkout remotes/origin/automate
             sudo python3 -m venv .venv
