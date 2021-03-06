@@ -38,7 +38,7 @@ def create_server(workserver=WorkServer()):
         print("job_id: %s, value: %s" % (key, data[key]))
         return '', 200
 
-    return server
+    return workserver
 
 
 if __name__ == '__main__':
