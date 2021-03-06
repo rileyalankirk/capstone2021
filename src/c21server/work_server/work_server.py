@@ -5,7 +5,7 @@ from redis import Redis
 class WorkServer:
     def __init__(self):
         self.app = Flask(__name__)
-        self.redis = Redis(host='20.0.0.20', port='6379')
+        self.redis = Redis()
 
 
 def create_server(workserver=WorkServer()):

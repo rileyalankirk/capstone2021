@@ -11,7 +11,7 @@ def generateJobs(r):
 
 
 def emulateJobCreation():
-    r = Redis(host='20.0.0.20', port='6379')
+    r = Redis()
     for _ in range(5):
         generateJobs(r)
         time.sleep(30)
